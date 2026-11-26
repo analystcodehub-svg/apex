@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="564" viewBox="0 0 750 564">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f296b"/>
+      <stop offset="55%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="cardG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="750" height="564" fill="url(#bg1)"/>
+  <circle cx="660" cy="90" r="130" fill="#38bdf8" opacity="0.16"/>
+  <circle cx="80" cy="500" r="110" fill="#60a5fa" opacity="0.14"/>
+  <rect x="36" y="28" width="220" height="36" rx="18" fill="rgba(15,23,42,0.42)"/>
+  <text x="146" y="52" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="16" font-weight="700">DUMMY IMAGE • 750×564</text>
+  <rect x="36" y="118" width="430" height="36" rx="8" fill="#dbeafe"/>
+  <text x="52" y="142" fill="#1e40af" font-family="sans-serif" font-size="18" font-weight="800">CONCEPT BOOSTER COURSE • CLASS 1–9</text>
+  <text x="36" y="215" fill="#fff" font-family="sans-serif" font-size="48" font-weight="900">School to Olympiad</text>
+  <text x="36" y="270" fill="#fff" font-family="sans-serif" font-size="48" font-weight="900">Pathway 2026–27</text>
+  <text x="36" y="318" fill="#e0f2fe" font-family="sans-serif" font-size="22" font-weight="600">6 Days LIVE Classes • Math, Science &amp; Vedic Tricks</text>
+  <rect x="36" y="360" width="360" height="148" rx="18" fill="url(#cardG)" stroke="#93c5fd" stroke-opacity="0.55" stroke-width="2"/>
+  <text x="58" y="405" fill="#e0f2fe" font-family="sans-serif" font-size="20" font-weight="700">⚡ Special Scholarship Offer</text>
+  <text x="58" y="468" fill="#fff" font-family="sans-serif" font-size="56" font-weight="900">₹29</text>
+  <text x="172" y="465" fill="#bfdbfe" font-family="sans-serif" font-size="26" font-weight="700" text-decoration="line-through">₹499</text>
+  <rect x="255" y="432" width="120" height="38" rx="19" fill="#0ea5e9"/>
+  <text x="315" y="457" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="18" font-weight="800">94% OFF</text>
+  <rect x="480" y="160" width="235" height="348" rx="24" fill="#fff" opacity="0.96"/>
+  <circle cx="597" cy="275" r="68" fill="#dbeafe"/>
+  <circle cx="597" cy="262" r="34" fill="#3b82f6"/>
+  <path d="M542 340 c12-34 98-34 110 0" fill="#1d4ed8"/>
+  <text x="597" y="398" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="19" font-weight="800">Topper Mentor</text>
+  <text x="597" y="426" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="15" font-weight="600">Hero Photo Slot</text>
+  <rect x="515" y="448" width="164" height="36" rx="18" fill="#dbeafe"/>
+  <text x="597" y="472" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="15" font-weight="800">IIT / NIT Faculty</text>
+</svg>

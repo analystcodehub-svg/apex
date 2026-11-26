@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="836" viewBox="0 0 750 836">
+  <rect width="750" height="836" fill="#f8fafc"/>
+  <rect x="28" y="24" width="694" height="788" rx="28" fill="#f0f9ff" stroke="#bae6fd" stroke-width="2"/>
+  <rect x="48" y="46" width="225" height="34" rx="17" fill="#dbeafe"/>
+  <text x="160" y="68" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="15" font-weight="800">DUMMY IMAGE 2 • 750×836</text>
+  <text x="375" y="130" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="36" font-weight="900">Learn From India’s Top 1%</text>
+  <text x="375" y="175" text-anchor="middle" fill="#1d4ed8" font-family="sans-serif" font-size="34" font-weight="900">Dual-Teacher Model</text>
+  <g transform="translate(52,215)">
+    <rect width="305" height="365" rx="22" fill="#fff" stroke="#bfdbfe" stroke-width="2"/>
+    <rect x="22" y="22" width="261" height="190" rx="16" fill="#dbeafe"/>
+    <circle cx="152" cy="102" r="44" fill="#2563eb"/>
+    <path d="M92 195 c14-42 106-42 120 0" fill="#1d4ed8"/>
+    <text x="152" y="248" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="22" font-weight="800">Prof. Arjun Mehta</text>
+    <text x="152" y="278" text-anchor="middle" fill="#1d4ed8" font-family="sans-serif" font-size="16" font-weight="700">IIT Bombay • 10+ Yrs Exp</text>
+    <text x="152" y="312" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="15">Master Math &amp; Olympiad Coach</text>
+    <rect x="55" y="326" width="195" height="26" rx="13" fill="#eff6ff"/>
+    <text x="152" y="344" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="13" font-weight="700">TEACHER PHOTO SLOT</text>
+  </g>
+  <g transform="translate(393,215)">
+    <rect width="305" height="365" rx="22" fill="#fff" stroke="#bae6fd" stroke-width="2"/>
+    <rect x="22" y="22" width="261" height="190" rx="16" fill="#e0f2fe"/>
+    <circle cx="152" cy="102" r="44" fill="#0284c7"/>
+    <path d="M92 195 c14-42 106-42 120 0" fill="#0369a1"/>
+    <text x="152" y="248" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="22" font-weight="800">Dr. Priya Nair</text>
+    <text x="152" y="278" text-anchor="middle" fill="#0284c7" font-family="sans-serif" font-size="16" font-weight="700">NIT Trichy • 9+ Yrs Exp</text>
+    <text x="152" y="312" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="15">Science &amp; Logic Mentor</text>
+    <rect x="55" y="326" width="195" height="26" rx="13" fill="#f0f9ff"/>
+    <text x="152" y="344" text-anchor="middle" fill="#0369a1" font-family="sans-serif" font-size="13" font-weight="700">TEACHER PHOTO SLOT</text>
+  </g>
+  <g transform="translate(52,610)">
+    <rect width="646" height="165" rx="20" fill="#fff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="323" y="52" text-anchor="middle" fill="#0f296b" font-family="sans-serif" font-size="24" font-weight="800">1 Teacher Teaches + 1 Mentor Guides</text>
+    <text x="323" y="92" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="18">Master Teacher simplifies tough topics with visual animations.</text>
+    <text x="323" y="124" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="18">Personal Mentor solves every student’s doubts in real time.</text>
+  </g>
+</svg>

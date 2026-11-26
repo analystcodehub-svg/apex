@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1000" viewBox="0 0 750 1000">
+  <rect width="750" height="1000" fill="#f8fbff"/>
+  <rect x="28" y="28" width="694" height="944" rx="28" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+  <rect x="48" y="52" width="230" height="34" rx="17" fill="#dbeafe"/>
+  <text x="163" y="74" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="15" font-weight="800">DUMMY IMAGE 1 • 750×1000</text>
+  <text x="375" y="140" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="38" font-weight="900">Why 18L+ Students Love</text>
+  <text x="375" y="188" text-anchor="middle" fill="#1d4ed8" font-family="sans-serif" font-size="38" font-weight="900">Our Concept Booster?</text>
+  <g transform="translate(48,235)">
+    <rect width="654" height="155" rx="20" fill="#fff" stroke="#dbeafe" stroke-width="2"/>
+    <circle cx="78" cy="78" r="44" fill="#2563eb"/>
+    <text x="78" y="90" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="36">⚡</text>
+    <text x="148" y="64" fill="#0f172a" font-family="sans-serif" font-size="26" font-weight="800">10x Faster Calculation Tricks</text>
+    <text x="148" y="100" fill="#64748b" font-family="sans-serif" font-size="19">Master Vedic Math &amp; mental shortcuts for exams</text>
+    <text x="148" y="128" fill="#1d4ed8" font-family="sans-serif" font-size="17" font-weight="700">Solve Olympiad problems in under 15 seconds</text>
+  </g>
+  <g transform="translate(48,415)">
+    <rect width="654" height="155" rx="20" fill="#fff" stroke="#dbeafe" stroke-width="2"/>
+    <circle cx="78" cy="78" r="44" fill="#0284c7"/>
+    <text x="78" y="90" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="36">🎯</text>
+    <text x="148" y="64" fill="#0f172a" font-family="sans-serif" font-size="26" font-weight="800">CBSE, ICSE &amp; Olympiad Aligned</text>
+    <text x="148" y="100" fill="#64748b" font-family="sans-serif" font-size="19">Bridge core school concepts to competitive level</text>
+    <text x="148" y="128" fill="#0284c7" font-family="sans-serif" font-size="17" font-weight="700">Tailored separately for Classes 1 to 9</text>
+  </g>
+  <g transform="translate(48,595)">
+    <rect width="654" height="155" rx="20" fill="#fff" stroke="#dbeafe" stroke-width="2"/>
+    <circle cx="78" cy="78" r="44" fill="#4f46e5"/>
+    <text x="78" y="90" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="36">💬</text>
+    <text x="148" y="64" fill="#0f172a" font-family="sans-serif" font-size="26" font-weight="800">1-on-1 Live Doubt Resolution</text>
+    <text x="148" y="100" fill="#64748b" font-family="sans-serif" font-size="19">Never leave a class with unanswered questions</text>
+    <text x="148" y="128" fill="#4f46e5" font-family="sans-serif" font-size="17" font-weight="700">Dedicated Academic Mentor assigned to each child</text>
+  </g>
+  <g transform="translate(48,785)">
+    <rect width="654" height="145" rx="20" fill="#0f296b"/>
+    <text x="327" y="58" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="24" font-weight="800">6 DAYS • LIVE INTERACTIVE BOOTCAMP</text>
+    <text x="327" y="98" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="20">Daily 60-Min Classes + Practice Tests + E-Notes</text>
+    <text x="327" y="126" text-anchor="middle" fill="#93c5fd" font-family="sans-serif" font-size="16">Replace this SVG with your custom promo graphic</text>
+  </g>
+</svg>

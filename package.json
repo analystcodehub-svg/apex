@@ -1,0 +1,13 @@
+{
+  "name": "coaching-class-landing",
+  "version": "1.0.0",
+  "description": "Online coaching class landing page in Node.js inspired by Oda Class Study Everywhere Topper",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

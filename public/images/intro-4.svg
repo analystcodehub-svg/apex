@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1074" viewBox="0 0 750 1074">
+  <rect width="750" height="1074" fill="#f8fbff"/>
+  <rect x="28" y="24" width="694" height="1026" rx="28" fill="#fff" stroke="#bfdbfe" stroke-width="2"/>
+  <rect x="48" y="48" width="235" height="34" rx="17" fill="#dbeafe"/>
+  <text x="165" y="70" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="15" font-weight="800">DUMMY IMAGE 4 • 750×1074</text>
+  <text x="375" y="132" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="36" font-weight="900">6-Day Roadmap to</text>
+  <text x="375" y="176" text-anchor="middle" fill="#1d4ed8" font-family="sans-serif" font-size="36" font-weight="900">Become a Class Topper</text>
+  <g font-family="sans-serif">
+    <rect x="54" y="210" width="642" height="86" rx="16" fill="#eff6ff"/>
+    <rect x="74" y="230" width="90" height="46" rx="12" fill="#2563eb"/>
+    <text x="119" y="260" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">Day 1–2</text>
+    <text x="185" y="250" fill="#0f172a" font-size="21" font-weight="800">Speed Math &amp; Core Foundation</text>
+    <text x="185" y="278" fill="#64748b" font-size="16">Vedic multiplication, squaring &amp; number sense</text>
+    <rect x="54" y="312" width="642" height="86" rx="16" fill="#f0f9ff"/>
+    <rect x="74" y="332" width="90" height="46" rx="12" fill="#0284c7"/>
+    <text x="119" y="362" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">Day 3–4</text>
+    <text x="185" y="352" fill="#0f172a" font-size="21" font-weight="800">Visual Science &amp; Logical Reasoning</text>
+    <text x="185" y="380" fill="#64748b" font-size="16">Concept application for NCERT &amp; Olympiad level</text>
+    <rect x="54" y="414" width="642" height="86" rx="16" fill="#eff6ff"/>
+    <rect x="74" y="434" width="90" height="46" rx="12" fill="#4f46e5"/>
+    <text x="119" y="464" text-anchor="middle" fill="#fff" font-size="18" font-weight="800">Day 5–6</text>
+    <text x="185" y="454" fill="#0f172a" font-size="21" font-weight="800">Mock Olympiad + Grand Finale</text>
+    <text x="185" y="482" fill="#64748b" font-size="16">Full-length test, rank card &amp; certificate</text>
+  </g>
+  <text x="375" y="565" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="30" font-weight="900">Our Recent Olympiad Toppers</text>
+  <g transform="translate(54,598)">
+    <rect width="198" height="270" rx="20" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <circle cx="99" cy="82" r="44" fill="#2563eb"/>
+    <text x="99" y="92" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="14" font-weight="800">PHOTO</text>
+    <text x="99" y="156" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="20" font-weight="800">Riya Sharma</text>
+    <text x="99" y="184" text-anchor="middle" fill="#1d4ed8" font-family="sans-serif" font-size="16" font-weight="700">Class 7 • Rank 4</text>
+    <text x="99" y="224" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="15">99.4% in IMO</text>
+  </g>
+  <g transform="translate(276,598)">
+    <rect width="198" height="270" rx="20" fill="#f0f9ff" stroke="#bae6fd" stroke-width="2"/>
+    <circle cx="99" cy="82" r="44" fill="#0284c7"/>
+    <text x="99" y="92" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="14" font-weight="800">PHOTO</text>
+    <text x="99" y="156" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="20" font-weight="800">Ishaan Verma</text>
+    <text x="99" y="184" text-anchor="middle" fill="#0369a1" font-family="sans-serif" font-size="16" font-weight="700">Class 5 • Gold</text>
+    <text x="99" y="224" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="15">NSO Gold Medal</text>
+  </g>
+  <g transform="translate(498,598)">
+    <rect width="198" height="270" rx="20" fill="#eef2ff" stroke="#c7d2fe" stroke-width="2"/>
+    <circle cx="99" cy="82" r="44" fill="#4f46e5"/>
+    <text x="99" y="92" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="14" font-weight="800">PHOTO</text>
+    <text x="99" y="156" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="20" font-weight="800">Meera Joshi</text>
+    <text x="99" y="184" text-anchor="middle" fill="#4338ca" font-family="sans-serif" font-size="16" font-weight="700">Class 8 • 98%</text>
+    <text x="99" y="224" text-anchor="middle" fill="#475569" font-family="sans-serif" font-size="15">School Topper</text>
+  </g>
+  <rect x="54" y="900" width="642" height="110" rx="20" fill="#eff6ff"/>
+  <text x="375" y="948" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="22" font-weight="800">Replace topper cards with real student photos later</text>
+  <text x="375" y="982" text-anchor="middle" fill="#64748b" font-family="sans-serif" font-size="17">Includes verified parent testimonials &amp; scorecards</text>
+</svg>

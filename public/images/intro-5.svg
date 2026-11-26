@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="750" height="1000" viewBox="0 0 750 1000">
+  <rect width="750" height="1000" fill="#fff"/>
+  <rect x="28" y="24" width="694" height="952" rx="28" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+  <rect x="48" y="48" width="235" height="34" rx="17" fill="#dbeafe"/>
+  <text x="165" y="70" text-anchor="middle" fill="#1e40af" font-family="sans-serif" font-size="15" font-weight="800">DUMMY IMAGE 5 • 750×1000</text>
+  <text x="375" y="132" text-anchor="middle" fill="#0f172a" font-family="sans-serif" font-size="36" font-weight="900">Trusted by 5 Million+</text>
+  <text x="375" y="178" text-anchor="middle" fill="#1d4ed8" font-family="sans-serif" font-size="36" font-weight="900">Parents Across India</text>
+  <g transform="translate(54,225)">
+    <rect width="642" height="210" rx="22" fill="#fff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="34" y="52" fill="#2563eb" font-family="sans-serif" font-size="24">★★★★★</text>
+    <text x="34" y="92" fill="#0f172a" font-family="sans-serif" font-size="20" font-weight="700">“My son’s math confidence jumped in just 6 days!”</text>
+    <text x="34" y="128" fill="#64748b" font-family="sans-serif" font-size="17">He now solves word problems without fear and actually looks</text>
+    <text x="34" y="154" fill="#64748b" font-family="sans-serif" font-size="17">forward to every evening live session.</text>
+    <text x="34" y="190" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="800">— Sunita Kapoor, Parent of Class 6 Student (Delhi)</text>
+  </g>
+  <g transform="translate(54,460)">
+    <rect width="642" height="210" rx="22" fill="#fff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="34" y="52" fill="#2563eb" font-family="sans-serif" font-size="24">★★★★★</text>
+    <text x="34" y="92" fill="#0f172a" font-family="sans-serif" font-size="20" font-weight="700">“Best ₹29 investment for my daughter’s exams.”</text>
+    <text x="34" y="128" fill="#64748b" font-family="sans-serif" font-size="17">The mentors follow up after class and the formula sheets</text>
+    <text x="34" y="154" fill="#64748b" font-family="sans-serif" font-size="17">made her school revision super easy.</text>
+    <text x="34" y="190" fill="#0f172a" font-family="sans-serif" font-size="16" font-weight="800">— Rajesh Iyer, Parent of Class 8 Student (Chennai)</text>
+  </g>
+  <g transform="translate(54,705)">
+    <rect width="642" height="225" rx="24" fill="#0f296b"/>
+    <text x="125" y="88" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="42" font-weight="900">5M+</text>
+    <text x="125" y="124" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="18">Happy Learners</text>
+    <text x="321" y="88" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="42" font-weight="900">4.8★</text>
+    <text x="321" y="124" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="18">Parent Rating</text>
+    <text x="517" y="88" text-anchor="middle" fill="#38bdf8" font-family="sans-serif" font-size="42" font-weight="900">100%</text>
+    <text x="517" y="124" text-anchor="middle" fill="#e2e8f0" font-family="sans-serif" font-size="18">Live Support</text>
+    <rect x="145" y="156" width="352" height="42" rx="21" fill="#2563eb"/>
+    <text x="321" y="183" text-anchor="middle" fill="#fff" font-family="sans-serif" font-size="18" font-weight="800">Limited Seats Filling Fast → Select Class</text>
+  </g>
+</svg>

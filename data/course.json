@@ -1,0 +1,145 @@
+{
+  "brandName": "Apex Study Academy",
+  "course": {
+    "id": 42283,
+    "title": "School to Olympiad Pathway: Maximise Potential",
+    "schedule": "30 Nov - 5 Dec",
+    "sessionCount": 6,
+    "price": 29,
+    "originalPrice": 499,
+    "remainingSeats": 10,
+    "remainingTimeMs": 600000,
+    "beStudents": 1895070,
+    "classes": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "soldOutClasses": [10, 11, 12],
+    "highlights": [
+      {
+        "title": "6 LIVE Interactive Classes",
+        "desc": "Real-time concept clarity & Olympiad tricks"
+      },
+      {
+        "title": "Dual-Teacher Doubt Solving",
+        "desc": "IIT/NIT Master Teachers + Dedicated Mentors"
+      },
+      {
+        "title": "Free E-Books & Formula Sheets",
+        "desc": "Chapter-wise NCERT & Olympiad practice bank"
+      },
+      {
+        "title": "All-India Mock Assessment",
+        "desc": "Detailed performance report & certificate"
+      }
+    ]
+  },
+  "images": {
+    "topBanner": "/images/teachers-blazer-duo.jpg",
+    "introImgs": [
+      {
+        "src": "/images/intro-1.svg",
+        "alt": "Concept Booster Course Overview (750x1000)"
+      },
+      {
+        "src": "/images/intro-2.svg",
+        "alt": "Meet Your IIT & NIT Master Teachers (750x836)"
+      },
+      {
+        "src": "/images/intro-3.svg",
+        "alt": "Interactive LIVE Classes & Instant Doubt Solving (750x866)"
+      },
+      {
+        "src": "/images/intro-4.svg",
+        "alt": "Topper Results & Curriculum Roadmap (750x1074)"
+      },
+      {
+        "src": "/images/intro-5.svg",
+        "alt": "Trusted by 5 Million+ Parents & Students (750x1000)"
+      }
+    ],
+    "edTechBadge": "/images/ed-tech.svg",
+    "extraMaterials": "/images/extra-materials.svg",
+    "trustedBy": "/images/trusted-by.svg"
+  },
+  "orderBubbles": [
+    { "name": "Aarav S.", "city": "Delhi", "classNum": 7, "avatar": "/images/avatar-1.svg" },
+    { "name": "Ananya R.", "city": "Bengaluru", "classNum": 5, "avatar": "/images/avatar-2.svg" },
+    { "name": "Vivaan K.", "city": "Mumbai", "classNum": 8, "avatar": "/images/avatar-3.svg" },
+    { "name": "Diya M.", "city": "Pune", "classNum": 6, "avatar": "/images/avatar-4.svg" },
+    { "name": "Kabir P.", "city": "Hyderabad", "classNum": 4, "avatar": "/images/avatar-1.svg" }
+  ],
+  "facultyStats": [
+    { "value": "50+", "label": "IITIANS TEAM" },
+    { "value": "1%", "label": "SELECTION RATE" },
+    { "value": "10+ Years", "label": "TEACHING EXPERIENCE" },
+    { "value": "98%", "label": "POSITIVE RATING" }
+  ],
+  "faculty": [
+    {
+      "name": "Rohan Sir",
+      "badge": "IIT DELHI",
+      "role": "Senior Faculty",
+      "experience": "10+ Years of Teaching",
+      "bio": "Mentored 5000+ Olympiad Rankers & School Toppers",
+      "photo": "/images/teacher-male-1.jpg"
+    },
+    {
+      "name": "Ananya Ma'am",
+      "badge": "IIT JODHPUR",
+      "role": "Senior Faculty",
+      "experience": "8+ Years of Teaching",
+      "bio": "Mentored 2 Lakh+ Students in Maths & Logic",
+      "photo": "/images/teacher-female-1.jpg"
+    },
+    {
+      "name": "Vikram Sir",
+      "badge": "NIT SURAT",
+      "role": "Chief Academic Officer",
+      "experience": "10+ Years of Teaching",
+      "bio": "4 Times Star Teacher • Mentored 5 Lakh+ Students",
+      "photo": "/images/teacher-male-2.jpg"
+    },
+    {
+      "name": "Sneha Ma'am",
+      "badge": "IIT BOMBAY",
+      "role": "Senior Faculty",
+      "experience": "8+ Years of Teaching",
+      "bio": "Science & Olympiad Specialist • 99% Student Rating",
+      "photo": "/images/teacher-female-2.jpg"
+    }
+  ],
+  "toppers": [
+    {
+      "name": "Ishaan Verma",
+      "grade": "Class 8 • IMO Gold",
+      "score": "99.4% Percentile",
+      "quote": "The 6-day Concept Booster helped me solve Olympiad math problems in half the time!",
+      "photo": "/images/student-male-1.png"
+    },
+    {
+      "name": "Riya Sharma",
+      "grade": "Class 7 • School Topper",
+      "score": "98.8% Aggregate",
+      "quote": "Dual-teacher doubt solving cleared every tough Science chapter before my final exams.",
+      "photo": "/images/student-female-1.png"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Kabir",
+      "date": "16 May 2026",
+      "text": "It is really good because you have the best teachers and they explain really nicely and energetically! Best choice ever to join!",
+      "avatar": "/images/student-male-1.png"
+    },
+    {
+      "name": "Aadhya",
+      "date": "11 May 2026",
+      "text": "Very good learning program for students. The teachers inspire children and all topics are explained clearly with practice sheets.",
+      "avatar": "/images/student-female-1.png"
+    },
+    {
+      "name": "Rohan & Sunita",
+      "date": "05 May 2026",
+      "text": "My child enjoys every evening live class with lots of confidence and excitement. Highly recommended for Class 1–9!",
+      "avatar": "/images/teacher-female-1.jpg"
+    }
+  ]
+}
