@@ -370,7 +370,23 @@
             <span id="confirm-price" class="order-total-price">₹29</span>
           </div>
         </div>
-        <button id="complete-enroll-btn" class="enroll-btn" type="button">Pay ₹29 &amp; Complete Enrollment</button>
+        <button id="complete-enroll-btn" class="enroll-btn" type="button">Pay ₹29 with PayU</button>
+        <p id="payu-config-note" class="payu-note hidden"></p>
+        <button id="demo-enroll-btn" class="demo-enroll-btn hidden" type="button">Complete Demo Enrollment (Without Payment)</button>
+      </div>
+
+      <!-- Step 2B: In-Website PayU Payment Checkout -->
+      <div id="step-payu" class="order-confirm-wrap hidden">
+        <p class="login-popup-container-title">Complete Payment via PayU</p>
+        <p class="payu-sub-txt">Pay securely with UPI, Debit/Credit Card, or NetBanking</p>
+        <div class="payu-frame-wrap">
+          <iframe id="payu-iframe" title="PayU Payment Checkout" class="payu-iframe"></iframe>
+        </div>
+        <div class="payu-actions-row">
+          <a id="payu-external-link" href="#" target="_blank" rel="noopener noreferrer" class="payu-link-btn">Open PayU in New Tab ↗</a>
+          <button id="payu-verify-btn" class="enroll-btn" type="button">I Have Paid → Verify &amp; Get Ticket</button>
+        </div>
+        <p id="payu-verify-error" class="login-popup-container-form-errcode"></p>
       </div>
 
       <!-- Step 3: Success Ticket -->

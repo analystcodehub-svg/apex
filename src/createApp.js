@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const { getPayuConfig, createPaymentLink, getPaymentLinkStatus } = require('./payu');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT_DIR, 'data');
@@ -227,6 +228,121 @@ function createApp({ serveStatic = true } = {}) {
   router.get('/enrollments', (_req, res) => {
     const enrollments = readJson(ENROLLMENTS_FILE, []);
     res.json({ ok: true, count: enrollments.length, enrollments });
+  });
+
+  router.get('/payu/config', (_req, res) => {
+    const cfg = getPayuConfig();
+    res.json({
+      ok: true,
+      env: cfg.env,
+      hasCredentials: cfg.hasCredentials,
+      isFullyConfigured: cfg.isFullyConfigured,
+    });
+  });
+
+  router.post('/payu/create-order', async (req, res) => {
+    const phone = String(req.body.phone || '').replace(/\D/g, '');
+    const token = String(req.body.token || '');
+    const classGrade = Number(req.body.classGrade);
+    const studentName = String(req.body.studentName || '').trim().slice(0, 60);
+
+    const tokenPayload = verifySignedPayload(token);
+    if (!tokenPayload || !tokenPayload.verified || tokenPayload.phone !== phone) {
+      return res.status(401).json({ ok: false, error: 'Phone verification required.' });
+    }
+
+    const config = readJson(COURSE_FILE, null);
+    if (!config) {
+      return res.status(500).json({ ok: false, error: 'Course config unavailable.' });
+    }
+
+    const { classes, soldOutClasses, price, title } = config.course;
+    if (!classes.includes(classGrade) || soldOutClasses.includes(classGrade)) {
+      return res.status(400).json({ ok: false, error: 'Selected class is not available.' });
+    }
+
+    const invoiceNumber = `APEX-${Date.now().toString().slice(-7)}-${Math.floor(100 + Math.random() * 900)}`;
+    try {
+      const result = await createPaymentLink({
+        amount: price,
+        invoiceNumber,
+        description: `${title} - Class ${classGrade}`,
+        customerName: studentName || 'Young Scholar',
+        customerPhone: phone,
+      });
+
+      if (!result.ok) {
+        return res.status(result.missing === 'merchantId' ? 400 : 502).json(result);
+      }
+
+      res.json({
+        ok: true,
+        paymentUrl: result.paymentUrl,
+        invoiceNumber,
+        amount: price,
+        env: result.env,
+      });
+    } catch (err) {
+      res.status(502).json({ ok: false, error: err.message || 'PayU gateway error.' });
+    }
+  });
+
+  router.post('/payu/verify-payment', async (req, res) => {
+    const phone = String(req.body.phone || '').replace(/\D/g, '');
+    const token = String(req.body.token || '');
+    const classGrade = Number(req.body.classGrade);
+    const studentName = String(req.body.studentName || '').trim().slice(0, 60);
+    const invoiceNumber = String(req.body.invoiceNumber || '').trim();
+
+    const tokenPayload = verifySignedPayload(token);
+    if (!tokenPayload || !tokenPayload.verified || tokenPayload.phone !== phone) {
+      return res.status(401).json({ ok: false, error: 'Phone verification required.' });
+    }
+    if (!invoiceNumber) {
+      return res.status(400).json({ ok: false, error: 'Missing invoiceNumber.' });
+    }
+
+    try {
+      const statusRes = await getPaymentLinkStatus(invoiceNumber);
+      if (!statusRes.paid) {
+        return res.status(402).json({
+          ok: false,
+          paid: false,
+          status: statusRes.status,
+          error: `Payment status is ${statusRes.status}. Complete payment in PayU and verify again.`,
+        });
+      }
+
+      const config = readJson(COURSE_FILE, null);
+      const { price, id, title, schedule } = config.course;
+      const record = {
+        orderId: invoiceNumber,
+        courseId: id,
+        courseTitle: title,
+        schedule,
+        classGrade,
+        studentName: studentName || 'Young Scholar',
+        phone,
+        amountPaid: price,
+        paymentGateway: 'PayU',
+        status: 'PAID',
+        createdAt: new Date().toISOString(),
+      };
+
+      const enrollments = readJson(ENROLLMENTS_FILE, []);
+      enrollments.push(record);
+      writeJson(ENROLLMENTS_FILE, enrollments);
+      otpStore.delete(phone);
+
+      res.json({
+        ok: true,
+        paid: true,
+        order: record,
+        beStudents: config.course.beStudents + enrollments.length,
+      });
+    } catch (err) {
+      res.status(502).json({ ok: false, error: err.message || 'Could not verify PayU payment.' });
+    }
   });
 
   router.post('/contact', (req, res) => {

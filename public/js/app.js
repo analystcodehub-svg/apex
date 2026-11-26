@@ -18,6 +18,7 @@
     otpCooldown: 0,
     otpCooldownTimer: null,
     bubbleIdx: 0,
+    payuInvoiceNumber: null,
   };
 
   const els = {
@@ -50,6 +51,7 @@
     popupCloseBtn: document.getElementById('popup-close-btn'),
     stepAuth: document.getElementById('step-auth'),
     stepConfirm: document.getElementById('step-confirm'),
+    stepPayu: document.getElementById('step-payu'),
     stepSuccess: document.getElementById('step-success'),
 
     popupSelectedClass: document.getElementById('popup-selected-class'),
@@ -70,6 +72,12 @@
     confirmHighlights: document.getElementById('confirm-highlights'),
     confirmPrice: document.getElementById('confirm-price'),
     completeEnrollBtn: document.getElementById('complete-enroll-btn'),
+    payuConfigNote: document.getElementById('payu-config-note'),
+    demoEnrollBtn: document.getElementById('demo-enroll-btn'),
+    payuIframe: document.getElementById('payu-iframe'),
+    payuExternalLink: document.getElementById('payu-external-link'),
+    payuVerifyBtn: document.getElementById('payu-verify-btn'),
+    payuVerifyError: document.getElementById('payu-verify-error'),
 
     ticketOrderId: document.getElementById('ticket-order-id'),
     ticketStudent: document.getElementById('ticket-student'),
@@ -392,6 +400,7 @@
     els.popupSelectedClass.textContent = `Selected: Class ${state.selectedClass}`;
     els.stepAuth.classList.remove('hidden');
     els.stepConfirm.classList.add('hidden');
+    if (els.stepPayu) els.stepPayu.classList.add('hidden');
     els.stepSuccess.classList.add('hidden');
     els.popup.classList.remove('hidden');
     startPayCountdown();
@@ -480,7 +489,9 @@
     els.confirmClassSchedule.textContent = `Class ${selectedClass} • ${course.schedule}`;
     els.confirmPhone.textContent = `+91 ${phone}`;
     els.confirmPrice.textContent = `₹${course.price}`;
-    els.completeEnrollBtn.textContent = `Pay ₹${course.price} & Complete Enrollment`;
+    els.completeEnrollBtn.textContent = `Pay ₹${course.price} with PayU`;
+    if (els.payuConfigNote) els.payuConfigNote.classList.add('hidden');
+    if (els.demoEnrollBtn) els.demoEnrollBtn.classList.add('hidden');
 
     els.confirmHighlights.innerHTML = '';
     (course.highlights || []).forEach((hl) => {
@@ -491,11 +502,101 @@
     });
 
     els.stepAuth.classList.add('hidden');
+    if (els.stepPayu) els.stepPayu.classList.add('hidden');
     els.stepConfirm.classList.remove('hidden');
   }
 
-  async function handleCompleteEnroll() {
+  function showConfirmedTicket(data) {
+    state.enrolled = true;
+    els.beStudentsCount.textContent = formatOrdinal(data.beStudents);
+    els.enrollBtn.textContent = 'Enrolled ✓';
+    els.enrollBtn.disabled = true;
+    els.headerEnrollBtn.textContent = 'Enrolled ✓';
+    syncMobileBar();
+
+    els.ticketOrderId.textContent = data.order.orderId;
+    els.ticketStudent.textContent = data.order.studentName;
+    els.ticketClass.textContent = `Class ${data.order.classGrade}`;
+    els.ticketSchedule.textContent = data.order.schedule;
+
+    els.stepConfirm.classList.add('hidden');
+    if (els.stepPayu) els.stepPayu.classList.add('hidden');
+    els.stepSuccess.classList.remove('hidden');
+  }
+
+  async function handleStartPayuPayment() {
     els.completeEnrollBtn.disabled = true;
+    if (els.payuConfigNote) els.payuConfigNote.classList.add('hidden');
+
+    try {
+      const res = await fetch('/api/payu/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          phone: state.phone,
+          token: state.verifiedToken,
+          classGrade: state.selectedClass,
+          studentName: state.studentName,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        if (els.payuConfigNote) {
+          els.payuConfigNote.textContent = data.error || 'PayU checkout is not ready yet.';
+          els.payuConfigNote.classList.remove('hidden');
+        }
+        if (els.demoEnrollBtn) els.demoEnrollBtn.classList.remove('hidden');
+        return;
+      }
+
+      state.payuInvoiceNumber = data.invoiceNumber;
+      els.payuIframe.src = data.paymentUrl;
+      els.payuExternalLink.href = data.paymentUrl;
+      els.payuVerifyError.textContent = '';
+
+      els.stepConfirm.classList.add('hidden');
+      els.stepPayu.classList.remove('hidden');
+    } catch {
+      showToast('Network error connecting to PayU.');
+    } finally {
+      els.completeEnrollBtn.disabled = false;
+    }
+  }
+
+  async function handleVerifyPayuPayment() {
+    if (!state.payuInvoiceNumber) return;
+    els.payuVerifyBtn.disabled = true;
+    els.payuVerifyError.textContent = '';
+
+    try {
+      const res = await fetch('/api/payu/verify-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          phone: state.phone,
+          token: state.verifiedToken,
+          classGrade: state.selectedClass,
+          studentName: state.studentName,
+          invoiceNumber: state.payuInvoiceNumber,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        els.payuVerifyError.textContent = data.error || 'Payment not confirmed yet.';
+        return;
+      }
+
+      showConfirmedTicket(data);
+    } catch {
+      els.payuVerifyError.textContent = 'Network error verifying PayU payment.';
+    } finally {
+      els.payuVerifyBtn.disabled = false;
+    }
+  }
+
+  async function handleCompleteEnroll() {
+    const btn = els.demoEnrollBtn || els.completeEnrollBtn;
+    btn.disabled = true;
     try {
       const res = await fetch('/api/enroll', {
         method: 'POST',
@@ -513,24 +614,11 @@
         return;
       }
 
-      state.enrolled = true;
-      els.beStudentsCount.textContent = formatOrdinal(data.beStudents);
-      els.enrollBtn.textContent = 'Enrolled ✓';
-      els.enrollBtn.disabled = true;
-      els.headerEnrollBtn.textContent = 'Enrolled ✓';
-      syncMobileBar();
-
-      els.ticketOrderId.textContent = data.order.orderId;
-      els.ticketStudent.textContent = data.order.studentName;
-      els.ticketClass.textContent = `Class ${data.order.classGrade}`;
-      els.ticketSchedule.textContent = data.order.schedule;
-
-      els.stepConfirm.classList.add('hidden');
-      els.stepSuccess.classList.remove('hidden');
+      showConfirmedTicket(data);
     } catch {
       showToast('Network error during enrollment.');
     } finally {
-      els.completeEnrollBtn.disabled = false;
+      btn.disabled = false;
     }
   }
 
@@ -552,7 +640,9 @@
     });
 
     els.resendOtpBtn.addEventListener('click', handleSendOtp);
-    els.completeEnrollBtn.addEventListener('click', handleCompleteEnroll);
+    els.completeEnrollBtn.addEventListener('click', handleStartPayuPayment);
+    if (els.demoEnrollBtn) els.demoEnrollBtn.addEventListener('click', handleCompleteEnroll);
+    if (els.payuVerifyBtn) els.payuVerifyBtn.addEventListener('click', handleVerifyPayuPayment);
 
     if (els.facultyPrev && els.facultyNext && els.facultyTrack) {
       els.facultyPrev.addEventListener('click', () => {
