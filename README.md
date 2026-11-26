@@ -19,6 +19,11 @@ npm start
 ```
 Then open `http://localhost:3000`.
 
+## Deploying to Netlify
+This repo includes `netlify.toml` and `netlify/functions/api.js` (via `serverless-http`):
+1. Connect your GitHub repo (`https://github.com/analystcodehub-svg/apex`) in Netlify, **or** run `npx netlify-cli deploy --prod`.
+2. Netlify will automatically publish `public/` and route `/api/*` requests to `/.netlify/functions/api/:splat`.
+
 ## Replacing Dummy Images Later
 All placeholder images live in `public/images/` and are configured in `data/course.json`:
 - `public/images/banner.svg` (`750×564`) — Top hero banner
