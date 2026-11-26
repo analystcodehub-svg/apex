@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us — Apex Study Academy</title>
+  <meta name="description" content="Contact Apex Study Academy at 903/A/5, Durga Nagar Colony, Somajiguda, Hyderabad, Telangana 500082.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="background" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="brand">
+        <span class="brand-badge">A</span>
+        <span class="brand-text">
+          <strong>Apex Study Academy</strong>
+          <small>LIVE Class 1–12 • CBSE &amp; Olympiad</small>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="/#overview">Overview</a>
+        <a href="/#faculty">Faculty</a>
+        <a href="/#choose-panel">Choose Class</a>
+        <a href="/contact.html" class="active-link">Contact</a>
+      </nav>
+      <a href="/#choose-panel" class="header-cta">Enroll ₹29</a>
+    </div>
+  </header>
+
+  <main class="page-wrapper subpage-wrapper">
+    <div class="subpage-hero">
+      <span class="hero-eyebrow"><span class="live-dot" aria-hidden="true"></span> WE'RE HERE TO HELP</span>
+      <h1>Contact Apex Study Academy</h1>
+      <p>Have questions about LIVE batches, Olympiad prep, or class schedules? Reach out to our Hyderabad center or send us a message below.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <h2>Visit or Write to Us</h2>
+        <div class="contact-detail-list">
+          <div class="contact-detail-item">
+            <span class="contact-icon">📍</span>
+            <div>
+              <strong>Registered Office Address</strong>
+              <p>903/A/5, Durga Nagar Colony, Somajiguda, Hyderabad, Telangana 500082</p>
+              <a class="map-link" href="https://maps.google.com/?q=903/A/5,+Durga+Nagar+Colony,+Somajiguda,+Hyderabad,+Telangana+500082" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <span class="contact-icon">🕒</span>
+            <div>
+              <strong>Academic Support Hours</strong>
+              <p>Monday – Sunday: 9:00 AM to 8:00 PM IST</p>
+            </div>
+          </div>
+          <div class="contact-detail-item">
+            <span class="contact-icon">✉️</span>
+            <div>
+              <strong>Student &amp; Parent Helpdesk</strong>
+              <p>support@apexstudyacademy.in</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-card">
+        <h2>Send Us a Message</h2>
+        <form id="contact-form" class="contact-form">
+          <div class="form-field">
+            <label for="c-name">Parent / Student Name</label>
+            <input id="c-name" type="text" required maxlength="60" placeholder="Enter your full name">
+          </div>
+          <div class="form-row-2">
+            <div class="form-field">
+              <label for="c-phone">Mobile Number</label>
+              <input id="c-phone" type="tel" required maxlength="10" placeholder="10-digit mobile number">
+            </div>
+            <div class="form-field">
+              <label for="c-grade">Student Class</label>
+              <select id="c-grade">
+                <option value="">Select Class (optional)</option>
+                <option value="Class 1">Class 1</option>
+                <option value="Class 2">Class 2</option>
+                <option value="Class 3">Class 3</option>
+                <option value="Class 4">Class 4</option>
+                <option value="Class 5">Class 5</option>
+                <option value="Class 6">Class 6</option>
+                <option value="Class 7">Class 7</option>
+                <option value="Class 8">Class 8</option>
+                <option value="Class 9">Class 9</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="c-message">How can we help?</label>
+            <textarea id="c-message" rows="4" required maxlength="500" placeholder="Ask about batch timings, syllabus, or fees..."></textarea>
+          </div>
+          <p id="contact-status" class="contact-status hidden"></p>
+          <button id="contact-submit" type="submit" class="enroll-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>Apex Study Academy</strong>
+        <p class="footer-address">903/A/5, Durga Nagar Colony, Somajiguda, Hyderabad, Telangana 500082</p>
+        <p class="footer-copy">&copy; 2026 Apex Study Academy. All rights reserved.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="/info.html?page=about">About Us</a>
+        <a href="/info.html?page=privacy">Privacy Policy</a>
+        <a href="/info.html?page=terms">Terms of Service</a>
+        <a href="/info.html?page=refund">Refund</a>
+        <a href="/info.html?page=disclaimer">Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('contact-status');
+      const btn = document.getElementById('contact-submit');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.classList.add('hidden');
+        status.classList.remove('is-error', 'is-ok');
+        btn.disabled = true;
+
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: document.getElementById('c-name').value.trim(),
+              phone: document.getElementById('c-phone').value.trim(),
+              classGrade: document.getElementById('c-grade').value,
+              message: document.getElementById('c-message').value.trim(),
+            }),
+          });
+          const data = await res.json();
+          status.classList.remove('hidden');
+          if (!res.ok || !data.ok) {
+            status.classList.add('is-error');
+            status.textContent = data.error || 'Please check your details and try again.';
+          } else {
+            status.classList.add('is-ok');
+            status.textContent = 'Thank you! Our academic counselor will call you back shortly.';
+            form.reset();
+          }
+        } catch {
+          status.classList.remove('hidden');
+          status.classList.add('is-error');
+          status.textContent = 'Network error. Please try again.';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

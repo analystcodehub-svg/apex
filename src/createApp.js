@@ -10,6 +10,9 @@ const IS_SERVERLESS = Boolean(process.env.NETLIFY || process.env.AWS_LAMBDA_FUNC
 const ENROLLMENTS_FILE = IS_SERVERLESS
   ? '/tmp/enrollments.json'
   : path.join(DATA_DIR, 'enrollments.json');
+const CONTACTS_FILE = IS_SERVERLESS
+  ? '/tmp/contacts.json'
+  : path.join(DATA_DIR, 'contacts.json');
 
 const OTP_SECRET = process.env.OTP_SECRET || 'apex-study-academy-otp-secret';
 const otpStore = new Map();
@@ -224,6 +227,34 @@ function createApp({ serveStatic = true } = {}) {
   router.get('/enrollments', (_req, res) => {
     const enrollments = readJson(ENROLLMENTS_FILE, []);
     res.json({ ok: true, count: enrollments.length, enrollments });
+  });
+
+  router.post('/contact', (req, res) => {
+    const name = String(req.body.name || '').trim().slice(0, 60);
+    const phone = String(req.body.phone || '').replace(/\D/g, '');
+    const classGrade = String(req.body.classGrade || '').trim().slice(0, 20);
+    const message = String(req.body.message || '').trim().slice(0, 500);
+
+    if (!name || !/^[6-9]\d{9}$/.test(phone) || !message) {
+      return res.status(400).json({
+        ok: false,
+        error: 'Please enter your name, a valid 10-digit mobile number, and a message.',
+      });
+    }
+
+    const contacts = readJson(CONTACTS_FILE, []);
+    const inquiry = {
+      id: `INQ-${Date.now().toString().slice(-6)}`,
+      name,
+      phone,
+      classGrade,
+      message,
+      createdAt: new Date().toISOString(),
+    };
+    contacts.push(inquiry);
+    writeJson(CONTACTS_FILE, contacts);
+
+    res.json({ ok: true, inquiry });
   });
 
   app.use('/api', router);

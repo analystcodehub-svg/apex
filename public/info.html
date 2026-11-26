@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Information — Apex Study Academy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="background" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="brand">
+        <span class="brand-badge">A</span>
+        <span class="brand-text">
+          <strong>Apex Study Academy</strong>
+          <small>LIVE Class 1–12 • CBSE &amp; Olympiad</small>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Primary navigation">
+        <a href="/#overview">Overview</a>
+        <a href="/#faculty">Faculty</a>
+        <a href="/#choose-panel">Choose Class</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+      <a href="/#choose-panel" class="header-cta">Enroll ₹29</a>
+    </div>
+  </header>
+
+  <main class="page-wrapper subpage-wrapper">
+    <div class="info-card">
+      <a href="/" class="back-home-link">← Back to Home</a>
+      <h1 id="info-title">About Us</h1>
+      <div id="info-body" class="info-body"></div>
+      <div class="info-address-box">
+        <strong>Apex Study Academy — Registered Office</strong>
+        <p>903/A/5, Durga Nagar Colony, Somajiguda, Hyderabad, Telangana 500082</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>Apex Study Academy</strong>
+        <p class="footer-address">903/A/5, Durga Nagar Colony, Somajiguda, Hyderabad, Telangana 500082</p>
+        <p class="footer-copy">&copy; 2026 Apex Study Academy. All rights reserved.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="/info.html?page=about">About Us</a>
+        <a href="/info.html?page=privacy">Privacy Policy</a>
+        <a href="/info.html?page=terms">Terms of Service</a>
+        <a href="/info.html?page=refund">Refund</a>
+        <a href="/info.html?page=disclaimer">Disclaimer</a>
+        <a href="/contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const PAGES = {
+        about: {
+          title: 'About Apex Study Academy',
+          paragraphs: [
+            'Apex Study Academy delivers interactive LIVE online coaching for students in Classes 1 to 12 across CBSE, ICSE, and Olympiad curricula.',
+            'Our Dual-Teacher model pairs IIT & NIT Master Teachers with dedicated Academic Mentors so every student receives crystal-clear concept delivery and 1-on-1 doubt resolution.',
+            'Headquartered in Somajiguda, Hyderabad, we focus on speed math, scientific reasoning, and exam confidence.'
+          ]
+        },
+        privacy: {
+          title: 'Privacy Policy',
+          paragraphs: [
+            'We collect only the student name, class grade, and parent mobile number necessary to schedule your LIVE sessions, send class reminders, and share study materials.',
+            'Your personal details are never sold to third parties. For data updates or deletion requests, please contact our office at 903/A/5, Durga Nagar Colony, Somajiguda, Hyderabad, Telangana 500082.'
+          ]
+        },
+        terms: {
+          title: 'Terms of Service',
+          paragraphs: [
+            'Enrollment grants the registered student access to the scheduled 6-day LIVE Concept Booster classes, class recordings, and digital practice booklets.',
+            'Class materials and recordings are intended strictly for individual educational use and may not be redistributed commercially.'
+          ]
+        },
+        refund: {
+          title: 'Refund Policy',
+          paragraphs: [
+            'Concept Booster trial enrollments (₹29) are eligible for a full refund or batch reschedule if requested before the second live session.',
+            'To request a refund or batch transfer, submit your Order ID via our Contact Us page.'
+          ]
+        },
+        disclaimer: {
+          title: 'Disclaimer',
+          paragraphs: [
+            'Academic outcomes and Olympiad rankings depend on regular attendance, practice completion, and individual student effort.',
+            'All course schedules and mentor assignments are subject to batch availability.'
+          ]
+        }
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const key = params.get('page') || 'about';
+      const entry = PAGES[key] || PAGES.about;
+      document.title = `${entry.title} — Apex Study Academy`;
+      document.getElementById('info-title').textContent = entry.title;
+      const body = document.getElementById('info-body');
+      entry.paragraphs.forEach((txt) => {
+        const p = document.createElement('p');
+        p.textContent = txt;
+        body.appendChild(p);
+      });
+    })();
+  </script>
+</body>
+</html>
