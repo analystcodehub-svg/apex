@@ -5,10 +5,10 @@
   --violet: #7c3aed;
   --indigo-soft: #eef2ff;
   --indigo-border: #c7d2fe;
-  --coral: #f97316;
-  --coral-deep: #ea580c;
-  --amber: #fbbf24;
-  --amber-soft: #fffbeb;
+  --coral: #6366f1;
+  --coral-deep: #4338ca;
+  --amber: #a78bfa;
+  --amber-soft: #f5f3ff;
   --text-dark: #0f172a;
   --text-muted: #64748b;
 }
@@ -161,12 +161,12 @@ ul {
 .header-cta {
   padding: 9px 18px;
   border-radius: 99px;
-  background: linear-gradient(90deg, #f59e0b, #f97316, #ef4444);
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
   color: #fff;
   font-size: 13.5px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 3px 12px rgba(249, 115, 22, 0.38);
+  box-shadow: 0 3px 12px rgba(79, 70, 229, 0.38);
   transition: transform 0.15s ease, filter 0.15s ease;
 }
 
@@ -246,12 +246,12 @@ ul {
   gap: 7px;
   padding: 5px 12px;
   border-radius: 99px;
-  background: rgba(249, 115, 22, 0.22);
-  border: 1px solid rgba(251, 191, 36, 0.55);
+  background: rgba(124, 58, 237, 0.28);
+  border: 1px solid rgba(167, 139, 250, 0.55);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.6px;
-  color: #fef3c7;
+  color: #ede9fe;
   margin-bottom: 10px;
 }
 
@@ -259,15 +259,15 @@ ul {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #fbbf24;
-  box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.8);
+  background: #a78bfa;
+  box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.8);
   animation: pulse-ring 1.6s infinite;
 }
 
 @keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.75); }
-  70% { box-shadow: 0 0 0 8px rgba(251, 191, 36, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0.75); }
+  70% { box-shadow: 0 0 0 8px rgba(167, 139, 250, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(167, 139, 250, 0); }
 }
 
 .hero-title {
@@ -284,7 +284,7 @@ ul {
   margin-top: 8px;
   font-size: 16px;
   font-weight: 700;
-  color: #fde68a;
+  color: #ddd6fe;
 }
 
 /* Live Order Bubble */
@@ -308,7 +308,7 @@ ul {
   font-size: 12px;
   font-weight: 600;
   color: #fff;
-  border: 1px solid rgba(251, 191, 36, 0.35);
+  border: 1px solid rgba(167, 139, 250, 0.42);
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.28);
   animation: bubble-in 0.55s ease forwards;
 }
@@ -364,7 +364,7 @@ ul {
 }
 
 .parents-choice-bar {
-  background: linear-gradient(90deg, #eef2ff 0%, #fef3c7 50%, #eef2ff 100%);
+  background: linear-gradient(90deg, #eef2ff 0%, #e0e7ff 50%, #eef2ff 100%);
   color: var(--indigo-deep);
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
@@ -417,9 +417,9 @@ ul {
 }
 
 .lab-tab.active {
-  background: linear-gradient(90deg, #f97316, #ea580c);
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
   color: #fff;
-  box-shadow: 0 3px 10px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 3px 10px rgba(79, 70, 229, 0.32);
 }
 
 .lab-panel-content {
@@ -453,9 +453,9 @@ ul {
 .lab-chip {
   padding: 4px 10px;
   border-radius: 99px;
-  background: #fff7ed;
-  border: 1px solid #fed7aa;
-  color: #c2410c;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #4338ca;
   font-size: 11.5px;
   font-weight: 700;
 }
@@ -479,9 +479,9 @@ ul {
 .mini-quiz-badge {
   padding: 3px 10px;
   border-radius: 99px;
-  background: rgba(251, 191, 36, 0.2);
-  border: 1px solid rgba(251, 191, 36, 0.5);
-  color: #fde68a;
+  background: rgba(167, 139, 250, 0.22);
+  border: 1px solid rgba(167, 139, 250, 0.55);
+  color: #ddd6fe;
   font-size: 11px;
   font-weight: 800;
 }
@@ -536,7 +536,7 @@ ul {
   margin-top: 10px;
   font-size: 12.5px;
   font-weight: 600;
-  color: #fde68a;
+  color: #ddd6fe;
 }
 
 /* Learn With IIT/NIT Teachers Card */
@@ -574,14 +574,14 @@ ul {
 }
 
 .iit-pill {
-  background: linear-gradient(135deg, #f97316, #ea580c);
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
   color: #fff;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
   font-size: 14px;
   padding: 5px 16px;
   border-radius: 99px;
-  box-shadow: 0 3px 10px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 3px 10px rgba(79, 70, 229, 0.32);
 }
 
 .iit-team-stats {
@@ -662,9 +662,9 @@ ul {
   margin-top: 10px;
   padding: 4px 12px;
   border-radius: 6px;
-  background: #fff7ed;
-  border: 1px solid #fdba74;
-  color: #c2410c;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  color: #4338ca;
   font-size: 12.5px;
   font-weight: 800;
 }
@@ -688,14 +688,14 @@ ul {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f97316, #ea580c);
+  background: linear-gradient(135deg, var(--indigo), var(--violet));
   color: #fff;
   font-weight: 800;
   font-size: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 3px 10px rgba(249, 115, 22, 0.3);
+  box-shadow: 0 3px 10px rgba(79, 70, 229, 0.32);
 }
 
 .dual-student-avatar {
@@ -829,8 +829,8 @@ ul {
   gap: 14px;
   padding: 14px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #fff7ed, #faf8ff);
-  border: 1px solid #fed7aa;
+  background: linear-gradient(135deg, #eef2ff, #faf8ff);
+  border: 1px solid #c7d2fe;
   transition: transform 0.16s ease;
 }
 
@@ -959,7 +959,7 @@ ul {
 
 .choose-panel.shake {
   animation: panel-shake 0.4s ease;
-  background-color: #fff7ed;
+  background-color: #eef2ff;
   border-radius: 8px;
 }
 
@@ -1014,9 +1014,9 @@ ul {
   font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
-  color: #92400e;
-  background: linear-gradient(180deg, #fef3c7, #fcd34d);
-  box-shadow: 0 2px 0 1px #d97706;
+  color: #3730a3;
+  background: linear-gradient(180deg, #eef2ff, #c7d2fe);
+  box-shadow: 0 2px 0 1px #6366f1;
   border-radius: 6px;
   user-select: none;
   transition: transform 0.14s ease, box-shadow 0.14s ease;
@@ -1024,7 +1024,7 @@ ul {
 
 .choose-panel .class-list .class-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(217, 119, 6, 0.28), 0 2px 0 1px #d97706;
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.26), 0 2px 0 1px #6366f1;
 }
 
 .choose-panel .class-list .class-item:active {
@@ -1049,8 +1049,8 @@ ul {
 
 .choose-panel .class-list .class-item.active {
   color: #fff;
-  background: linear-gradient(180deg, #fb923c, #ea580c);
-  box-shadow: 0 2px 0 1px #9a3412;
+  background: linear-gradient(180deg, #6366f1, #4338ca);
+  box-shadow: 0 2px 0 1px #1e1b4b;
   transform: scale(1.03);
 }
 
@@ -1110,10 +1110,10 @@ ul {
   padding: 4px 7px;
   border-radius: 6px;
   background: #fff;
-  border: 1px solid #fed7aa;
+  border: 1px solid #c7d2fe;
   font-size: 10.5px;
   font-weight: 700;
-  color: #9a3412;
+  color: #312e81;
 }
 
 .materials-info {
@@ -1166,7 +1166,7 @@ ul {
 
 /* Checkout Footer inside Card */
 .bottom-fix-area {
-  border-top: 1px solid #fed7aa;
+  border-top: 1px solid #c7d2fe;
   margin-top: 8px;
 }
 
@@ -1185,7 +1185,7 @@ ul {
   font-weight: 600;
   font-style: italic;
   margin-right: 10px;
-  color: #9a3412;
+  color: #312e81;
 }
 
 .bottom-fix-area .middle-wrap .be-students .highlight {
@@ -1195,7 +1195,7 @@ ul {
 
 .bottom-fix-area .enroll-wrap {
   padding: 12px 18px 16px;
-  background: linear-gradient(180deg, #fff7ed, #ffedd5);
+  background: linear-gradient(180deg, #eef2ff, #e0e7ff);
 }
 
 .bottom-fix-area .enroll-wrap .price-info {
@@ -1248,8 +1248,8 @@ ul {
   font-weight: 800;
   font-size: 17px;
   color: #fff;
-  background: linear-gradient(90deg, #fbbf24 -1%, #f97316 50%, #ef4444 101%);
-  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.45);
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
   border-radius: 74px;
   cursor: pointer;
   transition: transform 0.15s ease, filter 0.15s ease;
@@ -1421,8 +1421,8 @@ ul {
 
 .faculty-card:hover {
   transform: translateY(-4px);
-  border-color: #fdba74;
-  box-shadow: 0 12px 26px rgba(249, 115, 22, 0.14);
+  border-color: #a5b4fc;
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.14);
 }
 
 .faculty-badge {
@@ -1955,7 +1955,7 @@ ul {
     padding: 10px 16px;
     background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(8px);
-    border-top: 1px solid #fed7aa;
+    border-top: 1px solid #c7d2fe;
     box-shadow: 0 -4px 18px rgba(49, 46, 129, 0.14);
   }
 
@@ -1992,12 +1992,12 @@ ul {
   .mobile-bar-cta {
     padding: 11px 24px;
     border-radius: 99px;
-    background: linear-gradient(90deg, #f59e0b, #f97316, #ef4444);
+    background: linear-gradient(90deg, var(--indigo), var(--violet));
     color: #fff;
     font-size: 15px;
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 3px 10px rgba(249, 115, 22, 0.38);
+    box-shadow: 0 3px 10px rgba(79, 70, 229, 0.38);
     white-space: nowrap;
   }
 
@@ -2147,11 +2147,11 @@ ul {
 .bottom-cta-primary {
   padding: 12px 24px;
   border-radius: 10px;
-  background: linear-gradient(90deg, #f59e0b, #f97316, #ef4444);
+  background: linear-gradient(90deg, var(--indigo), var(--violet));
   color: #fff;
   font-size: 14.5px;
   font-weight: 800;
-  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
   transition: transform 0.15s ease, filter 0.15s ease;
 }
 
