@@ -55,6 +55,7 @@
     stepSuccess: document.getElementById('step-success'),
 
     popupSelectedClass: document.getElementById('popup-selected-class'),
+    popupClassPicker: document.getElementById('popup-class-picker'),
     remainingSeats: document.getElementById('remaining-seats'),
     remainingTime: document.getElementById('remaining-time'),
     studentNameInput: document.getElementById('student-name-input'),
@@ -119,8 +120,8 @@
       els.mobileBarSub.textContent = `Selected: Class ${state.selectedClass}`;
       els.mobileEnrollBtn.textContent = 'Enroll Now';
     } else {
-      els.mobileBarSub.textContent = 'Select a class to join';
-      els.mobileEnrollBtn.textContent = 'Choose Class';
+      els.mobileBarSub.textContent = 'Class 1–9 • Instant Seat Pass';
+      els.mobileEnrollBtn.textContent = 'Enroll Now';
     }
   }
 
@@ -382,22 +383,42 @@
     }, 1000);
   }
 
+  function renderPopupClasses() {
+    if (!els.popupClassPicker || !state.course) return;
+    const { classes, soldOutClasses } = state.course;
+    els.popupClassPicker.innerHTML = '';
+
+    classes
+      .filter((cls) => !soldOutClasses.includes(cls))
+      .forEach((cls) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'popup-cls-btn';
+        if (state.selectedClass === cls) btn.classList.add('active');
+        btn.textContent = `Class ${cls}`;
+        btn.addEventListener('click', () => {
+          state.selectedClass = cls;
+          els.loginError.textContent = '';
+          els.popupSelectedClass.textContent = `Selected: Class ${cls}`;
+          renderPopupClasses();
+          renderClasses();
+          syncMobileBar();
+        });
+        els.popupClassPicker.appendChild(btn);
+      });
+  }
+
   function triggerEnrollAttempt() {
     if (state.enrolled) return;
-    if (!state.selectedClass) {
-      els.choosePanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      els.choosePanel.classList.remove('shake');
-      void els.choosePanel.offsetWidth;
-      els.choosePanel.classList.add('shake');
-      showToast('Please select a class first!');
-      return;
-    }
     openPopup();
   }
 
   function openPopup() {
     els.loginError.textContent = '';
-    els.popupSelectedClass.textContent = `Selected: Class ${state.selectedClass}`;
+    els.popupSelectedClass.textContent = state.selectedClass
+      ? `Selected: Class ${state.selectedClass}`
+      : 'Tap a class below to continue';
+    renderPopupClasses();
     els.stepAuth.classList.remove('hidden');
     els.stepConfirm.classList.add('hidden');
     if (els.stepPayu) els.stepPayu.classList.add('hidden');
@@ -414,6 +435,11 @@
   async function handleSendOtp() {
     const rawPhone = els.phoneInput.value.replace(/\D/g, '');
     els.loginError.textContent = '';
+
+    if (!state.selectedClass) {
+      els.loginError.textContent = 'Please select your class above first.';
+      return;
+    }
 
     if (!/^[6-9]\d{9}$/.test(rawPhone)) {
       els.loginError.textContent = 'Enter a valid 10-digit mobile number starting with 6–9.';
