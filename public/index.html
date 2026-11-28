@@ -309,11 +309,20 @@
         </svg>
       </button>
 
+      <!-- Step 0: Select Class Popup (shown if no class selected yet) -->
+      <div id="step-select-class" class="hidden">
+        <p class="login-popup-container-title">Choose Class to Boost Score (2026-27) 🔥</p>
+        <p class="popup-select-sub">Select your student's class to continue enrollment</p>
+        <div id="popup-class-grid" class="popup-class-grid" role="group" aria-label="Choose class"></div>
+      </div>
+
       <!-- Step 1: Phone + OTP Verification -->
       <div id="step-auth">
         <p id="popup-title" class="login-popup-container-title">Reserve the limited seats NOW!</p>
-        <p id="popup-selected-class" class="popup-class-pill">Select your class below</p>
-        <div id="popup-class-picker" class="popup-class-picker" role="group" aria-label="Choose class"></div>
+        <div class="popup-class-row">
+          <p id="popup-selected-class" class="popup-class-pill">Selected: Class 5</p>
+          <button id="popup-change-class-btn" class="popup-change-cls-btn" type="button">Change</button>
+        </div>
 
         <div class="countdown">
           <div>

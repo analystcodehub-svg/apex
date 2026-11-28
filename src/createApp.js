@@ -3,10 +3,13 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 const { getPayuConfig, createPaymentLink, getPaymentLinkStatus } = require('./payu');
+const bundledCourseConfig = require('../data/course.json');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT_DIR, 'data');
-const COURSE_FILE = path.join(DATA_DIR, 'course.json');
+const COURSE_FILE = fs.existsSync(path.join(DATA_DIR, 'course.json'))
+  ? path.join(DATA_DIR, 'course.json')
+  : path.join(process.cwd(), 'data', 'course.json');
 const IS_SERVERLESS = Boolean(process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME);
 const ENROLLMENTS_FILE = IS_SERVERLESS
   ? '/tmp/enrollments.json'
@@ -14,6 +17,10 @@ const ENROLLMENTS_FILE = IS_SERVERLESS
 const CONTACTS_FILE = IS_SERVERLESS
   ? '/tmp/contacts.json'
   : path.join(DATA_DIR, 'contacts.json');
+
+function readCourseConfig() {
+  return readJson(COURSE_FILE, bundledCourseConfig);
+}
 
 const OTP_SECRET = process.env.OTP_SECRET || 'apex-study-academy-otp-secret';
 const otpStore = new Map();
@@ -90,10 +97,7 @@ function createApp({ serveStatic = true } = {}) {
   const router = express.Router();
 
   router.get('/course', (_req, res) => {
-    const config = readJson(COURSE_FILE, null);
-    if (!config) {
-      return res.status(500).json({ ok: false, error: 'Course configuration missing' });
-    }
+    const config = readCourseConfig();
     const enrollments = readJson(ENROLLMENTS_FILE, []);
     const dynamicStudents = config.course.beStudents + enrollments.length;
     const remainingSeats = Math.max(2, config.course.remainingSeats - (enrollments.length % 6));
@@ -189,10 +193,7 @@ function createApp({ serveStatic = true } = {}) {
       return res.status(401).json({ ok: false, error: 'Phone verification required.' });
     }
 
-    const config = readJson(COURSE_FILE, null);
-    if (!config) {
-      return res.status(500).json({ ok: false, error: 'Course config unavailable.' });
-    }
+    const config = readCourseConfig();
 
     const { classes, soldOutClasses, price, id, title, schedule } = config.course;
     if (!classes.includes(classGrade) || soldOutClasses.includes(classGrade)) {
@@ -251,10 +252,7 @@ function createApp({ serveStatic = true } = {}) {
       return res.status(401).json({ ok: false, error: 'Phone verification required.' });
     }
 
-    const config = readJson(COURSE_FILE, null);
-    if (!config) {
-      return res.status(500).json({ ok: false, error: 'Course config unavailable.' });
-    }
+    const config = readCourseConfig();
 
     const { classes, soldOutClasses, price, title } = config.course;
     if (!classes.includes(classGrade) || soldOutClasses.includes(classGrade)) {
@@ -313,7 +311,7 @@ function createApp({ serveStatic = true } = {}) {
         });
       }
 
-      const config = readJson(COURSE_FILE, null);
+      const config = readCourseConfig();
       const { price, id, title, schedule } = config.course;
       const record = {
         orderId: invoiceNumber,

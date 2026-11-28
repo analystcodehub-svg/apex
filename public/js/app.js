@@ -54,8 +54,10 @@
     stepPayu: document.getElementById('step-payu'),
     stepSuccess: document.getElementById('step-success'),
 
+    stepSelectClass: document.getElementById('step-select-class'),
+    popupClassGrid: document.getElementById('popup-class-grid'),
     popupSelectedClass: document.getElementById('popup-selected-class'),
-    popupClassPicker: document.getElementById('popup-class-picker'),
+    popupChangeClassBtn: document.getElementById('popup-change-class-btn'),
     remainingSeats: document.getElementById('remaining-seats'),
     remainingTime: document.getElementById('remaining-time'),
     studentNameInput: document.getElementById('student-name-input'),
@@ -384,28 +386,51 @@
   }
 
   function renderPopupClasses() {
-    if (!els.popupClassPicker || !state.course) return;
-    const { classes, soldOutClasses } = state.course;
-    els.popupClassPicker.innerHTML = '';
+    if (!els.popupClassGrid || !state.course) return;
+    const { classes = [], soldOutClasses = [] } = state.course;
+    els.popupClassGrid.innerHTML = '';
 
-    classes
-      .filter((cls) => !soldOutClasses.includes(cls))
-      .forEach((cls) => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'popup-cls-btn';
-        if (state.selectedClass === cls) btn.classList.add('active');
-        btn.textContent = `Class ${cls}`;
+    classes.forEach((cls) => {
+      const isSoldOut = soldOutClasses.includes(cls);
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'popup-cls-card';
+
+      const label = document.createElement('span');
+      label.textContent = `Class ${cls}`;
+      btn.appendChild(label);
+
+      if (isSoldOut) {
+        btn.classList.add('soldOut');
+        btn.disabled = true;
+        const soldTag = document.createElement('span');
+        soldTag.textContent = '(sold out)';
+        soldTag.style.display = 'block';
+        soldTag.style.fontSize = '10px';
+        soldTag.style.fontWeight = '700';
+        soldTag.style.opacity = '0.85';
+        btn.appendChild(soldTag);
+      } else {
+        if (state.selectedClass === cls) {
+          btn.classList.add('active');
+        }
         btn.addEventListener('click', () => {
           state.selectedClass = cls;
           els.loginError.textContent = '';
-          els.popupSelectedClass.textContent = `Selected: Class ${cls}`;
-          renderPopupClasses();
+          if (els.popupSelectedClass) {
+            els.popupSelectedClass.textContent = `Selected: Class ${cls}`;
+          }
           renderClasses();
+          renderPopupClasses();
           syncMobileBar();
+          if (els.stepSelectClass) els.stepSelectClass.classList.add('hidden');
+          els.stepAuth.classList.remove('hidden');
+          if (els.phoneInput) els.phoneInput.focus();
         });
-        els.popupClassPicker.appendChild(btn);
-      });
+      }
+
+      els.popupClassGrid.appendChild(btn);
+    });
   }
 
   function triggerEnrollAttempt() {
@@ -415,14 +440,25 @@
 
   function openPopup() {
     els.loginError.textContent = '';
-    els.popupSelectedClass.textContent = state.selectedClass
-      ? `Selected: Class ${state.selectedClass}`
-      : 'Tap a class below to continue';
     renderPopupClasses();
-    els.stepAuth.classList.remove('hidden');
     els.stepConfirm.classList.add('hidden');
     if (els.stepPayu) els.stepPayu.classList.add('hidden');
     els.stepSuccess.classList.add('hidden');
+
+    if (!state.selectedClass) {
+      if (els.stepSelectClass) els.stepSelectClass.classList.remove('hidden');
+      els.stepAuth.classList.add('hidden');
+      if (els.popupSelectedClass) {
+        els.popupSelectedClass.textContent = 'Select a class';
+      }
+    } else {
+      if (els.stepSelectClass) els.stepSelectClass.classList.add('hidden');
+      els.stepAuth.classList.remove('hidden');
+      if (els.popupSelectedClass) {
+        els.popupSelectedClass.textContent = `Selected: Class ${state.selectedClass}`;
+      }
+    }
+
     els.popup.classList.remove('hidden');
     startPayCountdown();
   }
@@ -437,7 +473,13 @@
     els.loginError.textContent = '';
 
     if (!state.selectedClass) {
-      els.loginError.textContent = 'Please select your class above first.';
+      if (els.stepSelectClass) {
+        els.stepAuth.classList.add('hidden');
+        els.stepSelectClass.classList.remove('hidden');
+        renderPopupClasses();
+      } else {
+        els.loginError.textContent = 'Please select your class first.';
+      }
       return;
     }
 
@@ -527,6 +569,7 @@
       els.confirmHighlights.appendChild(div);
     });
 
+    if (els.stepSelectClass) els.stepSelectClass.classList.add('hidden');
     els.stepAuth.classList.add('hidden');
     if (els.stepPayu) els.stepPayu.classList.add('hidden');
     els.stepConfirm.classList.remove('hidden');
@@ -545,6 +588,7 @@
     els.ticketClass.textContent = `Class ${data.order.classGrade}`;
     els.ticketSchedule.textContent = data.order.schedule;
 
+    if (els.stepSelectClass) els.stepSelectClass.classList.add('hidden');
     els.stepConfirm.classList.add('hidden');
     if (els.stepPayu) els.stepPayu.classList.add('hidden');
     els.stepSuccess.classList.remove('hidden');
@@ -669,6 +713,14 @@
     els.completeEnrollBtn.addEventListener('click', handleStartPayuPayment);
     if (els.demoEnrollBtn) els.demoEnrollBtn.addEventListener('click', handleCompleteEnroll);
     if (els.payuVerifyBtn) els.payuVerifyBtn.addEventListener('click', handleVerifyPayuPayment);
+    if (els.popupChangeClassBtn) {
+      els.popupChangeClassBtn.addEventListener('click', () => {
+        els.loginError.textContent = '';
+        renderPopupClasses();
+        els.stepAuth.classList.add('hidden');
+        if (els.stepSelectClass) els.stepSelectClass.classList.remove('hidden');
+      });
+    }
 
     if (els.facultyPrev && els.facultyNext && els.facultyTrack) {
       els.facultyPrev.addEventListener('click', () => {
@@ -765,9 +817,41 @@
     });
   }
 
+  const DEFAULT_COURSE_PAYLOAD = {
+    course: {
+      id: 42283,
+      title: 'School to Olympiad Pathway: Maximise Potential',
+      schedule: '30 Nov - 5 Dec',
+      price: 29,
+      originalPrice: 499,
+      remainingSeats: 10,
+      remainingTimeMs: 600000,
+      beStudents: 1895070,
+      classes: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      soldOutClasses: [10, 11, 12],
+      highlights: [
+        { title: 'Live 6-Day Bootcamp', desc: 'Interactive live sessions with IIT/NIT mentors' },
+        { title: 'Formula E-Book', desc: 'Concise Maths & Science revision notes' },
+        { title: 'All-India Mock Tests', desc: 'Daily practice quizzes and rank analysis' },
+        { title: 'Completion Certificate', desc: 'Verified certificate upon finishing the camp' },
+      ],
+    },
+    images: null,
+    facultyStats: [],
+    faculty: [],
+    toppers: [],
+    reviews: [],
+    orderBubbles: [],
+  };
+
   async function init() {
     bindEvents();
     setupInteractivePreview();
+
+    if (!state.course) {
+      state.course = DEFAULT_COURSE_PAYLOAD.course;
+      renderCourse();
+    }
 
     try {
       const res = await fetch('/api/course');
@@ -784,7 +868,7 @@
         startOrderBubbles();
       }
     } catch {
-      showToast('Failed to load course details.');
+      console.warn('Using bundled default course details.');
     }
   }
 
