@@ -2566,7 +2566,8 @@ ul {
   overflow: hidden;
   border: 1px solid var(--indigo-border);
   background: #f8fafc;
-  height: 310px;
+  height: 430px;
+  max-height: 58vh;
 }
 
 .payu-iframe {

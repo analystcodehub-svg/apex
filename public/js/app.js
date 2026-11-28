@@ -465,6 +465,7 @@
 
   function closePopup() {
     els.popup.classList.add('hidden');
+    if (els.payuIframe) els.payuIframe.src = 'about:blank';
     clearInterval(state.countdownTimer);
   }
 
@@ -594,6 +595,37 @@
     els.stepSuccess.classList.remove('hidden');
   }
 
+  function submitPayuForm(checkoutUrl, params, targetName) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = checkoutUrl;
+    form.target = targetName;
+    Object.entries(params || {}).forEach(([k, v]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = k;
+      input.value = String(v ?? '');
+      form.appendChild(input);
+    });
+    document.body.appendChild(form);
+    form.submit();
+    form.remove();
+  }
+
+  function handlePayuWindowMessage(event) {
+    if (event.origin !== window.location.origin) return;
+    const msg = event.data;
+    if (!msg || msg.type !== 'APEX_PAYU_CALLBACK') return;
+
+    if (msg.ok && msg.order) {
+      if (els.payuVerifyError) els.payuVerifyError.textContent = '';
+      showConfirmedTicket(msg);
+    } else if (els.payuVerifyError) {
+      els.payuVerifyError.textContent =
+        msg.error || 'Payment was cancelled or declined. Retry above or click Verify.';
+    }
+  }
+
   async function handleStartPayuPayment() {
     els.completeEnrollBtn.disabled = true;
     if (els.payuConfigNote) els.payuConfigNote.classList.add('hidden');
@@ -619,13 +651,19 @@
         return;
       }
 
-      state.payuInvoiceNumber = data.invoiceNumber;
-      els.payuIframe.src = data.paymentUrl;
-      els.payuExternalLink.href = data.paymentUrl;
+      state.payuInvoiceNumber = data.txnid || data.invoiceNumber;
       els.payuVerifyError.textContent = '';
-
       els.stepConfirm.classList.add('hidden');
       els.stepPayu.classList.remove('hidden');
+
+      if (data.paymentUrl) {
+        els.payuIframe.src = data.paymentUrl;
+        els.payuExternalLink.href = data.paymentUrl;
+        els.payuExternalLink.classList.remove('hidden');
+      } else if (data.checkoutUrl && data.params) {
+        els.payuExternalLink.classList.add('hidden');
+        submitPayuForm(data.checkoutUrl, data.params, 'payu-iframe');
+      }
     } catch {
       showToast('Network error connecting to PayU.');
     } finally {
@@ -647,6 +685,7 @@
           token: state.verifiedToken,
           classGrade: state.selectedClass,
           studentName: state.studentName,
+          txnid: state.payuInvoiceNumber,
           invoiceNumber: state.payuInvoiceNumber,
         }),
       });
@@ -693,6 +732,7 @@
   }
 
   function bindEvents() {
+    window.addEventListener('message', handlePayuWindowMessage);
     els.enrollBtn.addEventListener('click', triggerEnrollAttempt);
     els.headerEnrollBtn.addEventListener('click', triggerEnrollAttempt);
     els.mobileEnrollBtn.addEventListener('click', triggerEnrollAttempt);
